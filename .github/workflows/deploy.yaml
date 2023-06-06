@@ -18,7 +18,7 @@ jobs:
       - run: docker build -t arnoldabraham/react-test -f ./client/Dockerfile.dev ./client
       - run: docker run -e CI=true arnoldabraham/react-test npm test
  
-      - run: docker build -t arnoldabraham/multi-client -f ./client/Dockerfile ./client
+      - run: docker build -t arnoldabraham/multi-client ./client
       - run: docker build -t arnoldabraham/multi-nginx ./nginx
       - run: docker build -t arnoldabraham/multi-server ./server
       - run: docker build -t arnoldabraham/multi-worker ./worker
