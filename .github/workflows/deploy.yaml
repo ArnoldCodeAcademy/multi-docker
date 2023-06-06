@@ -16,18 +16,18 @@ jobs:
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
-      - run: docker build -t cygnetops/react-test -f ./client/Dockerfile.dev ./client
-      - run: docker run -e CI=true cygnetops/react-test npm test
+      - run: docker build -t arnoldabraham/react-test -f ./client/Dockerfile.dev ./client
+      - run: docker run -e CI=true arnoldabraham/react-test npm test
  
-      - run: docker build -t cygnetops/multi-client-10-14 ./client
-      - run: docker build -t cygnetops/multi-nginx-10-14 ./nginx
-      - run: docker build -t cygnetops/multi-server-10-14 ./server
-      - run: docker build -t cygnetops/multi-worker-10-14 ./worker
- 
-      - run: docker push cygnetops/multi-client-10-14
-      - run: docker push cygnetops/multi-nginx-10-14
-      - run: docker push cygnetops/multi-server-10-14
-      - run: docker push cygnetops/multi-worker-10-14
+      - run: docker build -t arnoldabraham/multi-client ./client
+      - run: docker build -t arnoldabraham/multi-nginx ./nginx
+      - run: docker build -t arnoldabraham/multi-server ./server
+      - run: docker build -t arnoldabraham/multi-worker ./worker
+
+      - run: docker push arnoldabraham/multi-client
+      - run: docker push arnoldabraham/multi-nginx
+      - run: docker push arnoldabraham/multi-server
+      - run: docker push arnoldabraham/multi-worker
  
       - name: Generate deployment package
         run: zip -r deploy.zip . -x '*.git*'
